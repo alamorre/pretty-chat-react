@@ -11,8 +11,6 @@ import {
   useMultiChatLogic,
 } from "react-chat-engine-advanced";
 
-import "../theme.css";
-
 import { projectId } from "../hooks/constants";
 
 const ChatsPage = () => {
