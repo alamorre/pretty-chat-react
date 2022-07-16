@@ -10,12 +10,14 @@ import {
   MultiChatSocket,
   useMultiChatLogic,
   MessageFormProps,
+  ChatCardProps,
 } from "react-chat-engine-advanced";
 
 import "../theme.css";
 
 import MessageForm from "./MessageForm";
 import UserSearch from "./UserSearch";
+import ChatCard from "./ChatCard";
 
 import { projectId } from "../hooks/constants";
 
@@ -77,6 +79,18 @@ const ChatsPage = () => {
                   onSelect={(chatId: number) =>
                     chatProps.onChatCardClick(chatId)
                   }
+                />
+              )}
+              renderChatCard={(props: ChatCardProps) => (
+                <ChatCard
+                  {...props}
+                  username={chatProps.username}
+                  onChatCardClick={chatProps.onChatCardClick}
+                  isActive={
+                    props.chat !== undefined &&
+                    chatProps.activeChatId === props.chat.id
+                  }
+                  chat={props.chat}
                 />
               )}
               renderMessageForm={(props: MessageFormProps) => (
