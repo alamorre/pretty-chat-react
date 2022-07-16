@@ -16,6 +16,7 @@ import {
 
 import "../theme.css";
 
+import Sidebar from "./Sidebar";
 import MessageForm from "./MessageForm";
 import UserSearch from "./UserSearch";
 import ChatCard from "./ChatCard";
@@ -59,7 +60,9 @@ const ChatsPage = () => {
               left: "0px",
               backgroundColor: "rgb(40,43,54)",
             }}
-          ></div>
+          >
+            <Sidebar />
+          </div>
 
           <div
             style={{
