@@ -15,6 +15,7 @@ import {
 import "../theme.css";
 
 import MessageForm from "./MessageForm";
+import UserSearch from "./UserSearch";
 
 import { projectId } from "../hooks/constants";
 
@@ -69,6 +70,15 @@ const ChatsPage = () => {
 
             <MultiChatWindow
               {...chatProps}
+              renderChatForm={() => (
+                <UserSearch
+                  username={chatProps.username}
+                  secret={chatProps.secret}
+                  onSelect={(chatId: number) =>
+                    chatProps.onChatCardClick(chatId)
+                  }
+                />
+              )}
               renderMessageForm={(props: MessageFormProps) => (
                 <MessageForm {...props} />
               )}
