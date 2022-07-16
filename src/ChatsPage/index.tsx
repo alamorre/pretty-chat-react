@@ -11,6 +11,7 @@ import {
   useMultiChatLogic,
   MessageFormProps,
   ChatCardProps,
+  ChatHeaderProps,
 } from "react-chat-engine-advanced";
 
 import "../theme.css";
@@ -18,6 +19,7 @@ import "../theme.css";
 import MessageForm from "./MessageForm";
 import UserSearch from "./UserSearch";
 import ChatCard from "./ChatCard";
+import ChatHeader from "./ChatHeader";
 
 import { projectId } from "../hooks/constants";
 
@@ -91,6 +93,14 @@ const ChatsPage = () => {
                     chatProps.activeChatId === props.chat.id
                   }
                   chat={props.chat}
+                />
+              )}
+              renderChatHeader={(props: ChatHeaderProps) => (
+                <ChatHeader
+                  {...props}
+                  chat={chatProps.chat}
+                  username={chatProps.username}
+                  secret={chatProps.secret}
                 />
               )}
               renderMessageForm={(props: MessageFormProps) => (
