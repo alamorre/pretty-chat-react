@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 
-// import axios from "axios";
+import axios from "axios";
 
 import { PersonObject } from "react-chat-engine-advanced";
 
 import { useIsMobile } from "../hooks/isMobile";
+import { Context } from "../hooks/context";
 import { privateKey } from "../hooks/constants";
 
 import TextInput from "../components/TextInput";
@@ -24,7 +25,47 @@ const SignUpForm = (props: SignUpFormProps) => {
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState<File | undefined>(undefined);
   // Hooks
+  const { setUser } = useContext(Context);
   const isMobile: boolean = useIsMobile();
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const userJson: PersonObject = {
+      email: email,
+      username: email,
+      first_name: firstName,
+      last_name: lastName,
+      secret: password,
+      avatar: null,
+      custom_json: {},
+      is_online: true,
+    };
+
+    let formData = new FormData();
+    formData.append("email", email);
+    formData.append("username", email);
+    formData.append("first_name", firstName);
+    formData.append("last_name", lastName);
+    formData.append("secret", password);
+    if (avatar) {
+      formData.append("avatar", avatar, avatar.name);
+    }
+
+    const headers = { "Private-Key": privateKey };
+
+    axios
+      .post("https://api.chatengine.io/users/", formData, {
+        headers,
+      })
+      .then((r) => {
+        if (r.status === 201) {
+          userJson.avatar = r.data.avatar;
+          setUser(userJson);
+        }
+      })
+      .catch((e) => console.log("Error", e));
+  };
 
   return (
     <div>
@@ -35,7 +76,7 @@ const SignUpForm = (props: SignUpFormProps) => {
         <Link onClick={() => props.onHasAccount()}>Log in</Link>
       </div>
 
-      <form>
+      <form onSubmit={onSubmit}>
         <TextInput
           label="First name"
           name="first_name"
