@@ -56,9 +56,9 @@
 .signout-icon { cursor: pointer; color: rgb(153, 153, 153); transition: all 0.66s ease; font-size: 18px; position: absolute; bottom: 24px; left: calc(50% - 9px); }
 .signout-icon:hover { color: #1890ff; }
 
-.ce-chat-form-autocomplete { width: calc(100% - 12px - 12px); margin: 0px 12px; padding-top: 28px; padding-bottom: 32px; }
-.ant-input-lg { background-color: rgb(40,43,54); outline: none; border: 1px solid rgb(40,43,54); color: white; border-radius: 8px 0px 0px 8px; }
-.ant-input-lg::placeholder { color: white; font-family: 'VisbyRoundCF-DemiBold'; padding-top: 12px; }
-.ant-input-search-button { background-color: rgb(40,43,54); border: none; outline: none; margin-left: 3px; border-radius: 0px 8px 8px 0px !important; }
-.ant-input-search-button:hover { background-color: rgb(40,43,54); }
-.ant-input-group-addon { background-color: rgb(40,43,54); }
+.ce-chat-form-autocomplete { width: calc(100% - 12px - 12px) !important; margin: 0px 12px !important; padding-top: 28px !important; padding-bottom: 32px !important; }
+.ant-input-lg { background-color: rgb(40,43,54) !important; outline: none !important; border: 1px solid rgb(40,43,54) !important; color: white !important; border-radius: 8px 0px 0px 8px !important; }
+.ant-input-lg::placeholder { color: white !important; font-family: 'VisbyRoundCF-DemiBold' !important; padding-top: 12px !important; }
+.ant-input-search-button { background-color: rgb(40,43,54) !important; border: none !important; outline: none !important; margin-left: 3px !important; border-radius: 0px 8px 8px 0px !important; }
+.ant-input-search-button:hover { background-color: rgb(40,43,54) !important; }
+.ant-input-group-addon { background-color: rgb(40,43,54) !important; }
