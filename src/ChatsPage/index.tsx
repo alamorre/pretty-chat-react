@@ -9,9 +9,12 @@ import {
   MultiChatWindow,
   MultiChatSocket,
   useMultiChatLogic,
+  MessageFormProps,
 } from "react-chat-engine-advanced";
 
 import "../theme.css";
+
+import MessageForm from "./MessageForm";
 
 import { projectId } from "../hooks/constants";
 
@@ -66,6 +69,9 @@ const ChatsPage = () => {
 
             <MultiChatWindow
               {...chatProps}
+              renderMessageForm={(props: MessageFormProps) => (
+                <MessageForm {...props} />
+              )}
               renderChatSettings={() => (
                 <div
                   style={{
